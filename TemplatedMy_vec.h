@@ -17,10 +17,13 @@ class TemplatedMy_vec {
     
 public:
     //member functions
+ 
     //constructor
     TemplatedMy_vec(): size(-1), capacity(10), ptr(new T[capacity]){};
+ 
     //destructor
     ~TemplatedMy_vec(){delete[] ptr; };
+ 
     // copy constructor
     TemplatedMy_vec(const TemplatedMy_vec<T>& vec){
         size = vec.get_size()-1;
@@ -30,6 +33,7 @@ public:
             ptr[i] = vec.elem_at_rank(i);
         }
     };
+ 
     //assignment operator
     TemplatedMy_vec<T>& operator=(const TemplatedMy_vec<T>& vec){
         if(this == &vec){
@@ -43,14 +47,19 @@ public:
         }
         return *this;
     };
-    int get_size() const {return size+1; };
-    int get_capacity() const {return capacity; };
-    T& operator[](int i) const {return ptr[i]; };
-    T& operator[](int i){return ptr[i]; };
-    bool is_empty() const {return size == -1; };
-    //index threw the array
+ 
+    int get_size() const {return size+1; }; //lets the user get the size of the vector
+ 
+    int get_capacity() const {return capacity; }; //lets the user get the capacity of the vector
+ 
+    T& operator[](int i) const {return ptr[i]; }; //lets the user get the element at a given index of the vector
+ 
+    bool is_empty() const {return size == -1; }; //lets the user check if the vector is empty
+ 
+    //lets the user get the element at a given index of the vector
     T& elem_at_rank(int r) const {return ptr[r]; };
-    //let the user insert a new element at a given rank and resize the array if the capacity of the array is full.
+ 
+    //let the user insert a new element at a given rank and resize the vector if the capacity of the array is full.
     void insert_at_rank(int r, const T& elem){
         if(r == get_size() && get_size() < capacity){
             ptr[r] = elem;
@@ -94,7 +103,8 @@ public:
             throw runtime_error("Error: out of bounds.");
         }
     };
-    //let the user replace a element in the array at a given rank with a new element.
+ 
+    //let the user replace a element in the vector at a given rank with a new element.
     void replace_at_rank(int r, const T& elem){
         if(r >= 0 && r < get_size() ){
             ptr[r] = elem;
@@ -103,6 +113,7 @@ public:
             throw runtime_error("Error: out of bounds.");
         }
     };
+ 
     //let the user remove a element at a given rank.
     void remove_at_rank(int r){
         if(r >= 0 && r < get_size() ){
@@ -126,7 +137,8 @@ public:
         }
     };
 };
-//output the array of the class.
+
+//outputs the contents of the vector.
 template<typename T>
 ostream& operator<<(ostream& out, const TemplatedMy_vec<T>& vec){
     for (int i = 0; i < vec.get_size() ; ++i) {
@@ -135,7 +147,7 @@ ostream& operator<<(ostream& out, const TemplatedMy_vec<T>& vec){
     return out;
 };
 
-//find the max index of the largest element in the array.
+//finds the index of the largest element in the vector.
 template<typename T>
 int find_max_index(const TemplatedMy_vec<T>& v,int size){
     int maxIndex = 0;
@@ -154,7 +166,7 @@ int find_max_index(const TemplatedMy_vec<T>& v,int size){
     }
 };
 
-//sort the array the array from smallest to largest.
+//sort the vector from smallest to largest.
 template<typename T>
 void sort_max(TemplatedMy_vec<T>& vec){
     int size = vec.get_size();
