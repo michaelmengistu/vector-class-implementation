@@ -1,5 +1,5 @@
 /*My_vec.h
- Your name
+ Michael Mengistu
  Header file for a vector data structure.
  */
 
