@@ -2,7 +2,7 @@
 
 created a vector class using c++
 
-## Vector class Member functions Description:
+## Vector Class functions Description:
 - `elem_at_rank(int r)`: returns the element at rank r. The best and worst run time is O(1).
 - `replace_at_rank(int r, const char& elem)`: replaces a element in the array at r with elem. The best run time O(1) and the worst run time is O(n).
 - `insert_at_rank(int r, const char& elem)`: insert a new element at r with elem and resize the array by double. if the capacity of the array is full. The best and worst run time is O(nlogn).
